@@ -2,9 +2,11 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
-public class Lit extends ByteCode {
+import java.util.ArrayList;
 
-    public void init (String a, String b) {
+public class DumpCode extends ByteCode {
+
+    public void init (ArrayList<String> a) {
 
 
     }

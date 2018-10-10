@@ -6,7 +6,7 @@ import java.io.*;
  * <pre>
  *     Interpreter class runs the interpreter:
  *     1. Perform all initializations
- *     2. Load the bytecodes from file
+ *     2. LoadCode the bytecodes from file
  *     3. Run the virtual machine
  * 
  *     THIS FILE CANNOT BE MODIFIED. DO NOT

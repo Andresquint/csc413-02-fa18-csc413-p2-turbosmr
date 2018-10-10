@@ -2,9 +2,11 @@ package interpreter.bytecode;
 
 import interpreter.VirtualMachine;
 
-public class Pop extends ByteCode {
+import java.util.ArrayList;
 
-    public void init (String a, String b) {
+public class WriteCode extends ByteCode{
+
+    public void init (ArrayList<String> a) {
 
 
     }
@@ -13,4 +15,3 @@ public class Pop extends ByteCode {
 
     }
 }
-

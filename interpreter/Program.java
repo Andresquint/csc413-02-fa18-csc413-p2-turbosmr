@@ -1,10 +1,14 @@
 package interpreter;
 
+import interpreter.bytecode.*;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Program {
 
     private ArrayList<ByteCode> program;
+    private HashMap <String, Integer> labels = new HashMap();
 
     public Program() {
 
@@ -29,11 +33,32 @@ public class Program {
      *
      * @param program Program object that holds a list of ByteCodes
      */
-    public void resolveAddrs() {
 
+    public void addCode(ByteCode byteCode) {
+
+        if (byteCode instanceof LabelCode) {
+
+            LabelCode labelBranch = (LabelCode) byteCode;
+            labels.put(labelBranch.getName(), program.size());
+        }
     }
 
+    public void resolveAddrs() {
 
+        for (ByteCode byteCodeList : program) {
 
+            if (byteCodeList instanceof GotoCode) {
+                GotoCode changeBranch = (GotoCode) byteCodeList;
+                changeBranch.setAddress(labels.get(changeBranch.getName()));
 
+            } else if (byteCodeList instanceof FalseBranchCode) {
+                FalseBranchCode changeBranch = (FalseBranchCode) byteCodeList;
+                changeBranch.setAddress(labels.get(changeBranch.getName()));
+
+            } else if (byteCodeList instanceof CallCode) {
+                CallCode changeBranch = (CallCode) byteCodeList;
+                changeBranch.setAddress(labels.get(changeBranch.getName()));
+            }
+        }
+    }
 }
